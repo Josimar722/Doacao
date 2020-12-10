@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
+import { UserLogin } from '../model/UserLogin';
+import { AuthService } from '../service/auth.service';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+
+  email: string
+  senha: string
+  nome: string
+  userLogin: UserLogin = new UserLogin
+
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    
+  ) { }
+
+  ngOnInit(): void {
+
+  }
+
+  sair(){
+    this.router.navigate(['/login'])
+    environment.token = ''
+    this.userLogin = new UserLogin()
+    alert("Obrigado pela visita, até a próxima...")
+  }
+
+}

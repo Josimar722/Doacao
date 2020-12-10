@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"></a>
+  <img class="página" src="assets/logo.png" alt="iroman" width="100pt">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-item nav-link active texto text-monospace p-3 font-weight-bold" routerLink='home'>Home<span
+            class="sr-only">(Página atual)</span></a>
+      </li>
+      <div *ngIf='authService.btnLogin()'>
+        <li class="nav-item">
+          <a class="nav-item nav-link active texto text-monospace p-3 font-weight-bold" routerLink='login'>Login</a>
+        </li>
+      </div>
+
+      <div *ngIf='authService.btnLogin()'>
+        <li class="nav-item">
+          <a class="nav-item nav-link active texto text-monospace p-3 font-weight-bold"
+            routerLink='cadastro'>Cadastro</a>
+        </li>
+      </div>
+
+      <div *ngIf='authService.btnSair()'>
+        <li class="nav-item">
+          <a class="nav-link nav-link active texto text-monospace p-3 font-weight-bold" (click)='sair()'>Sair</a>
+        </li>
+      </div>
+    </ul>
+    <!-- Saudação Usuario -->
+  <h5 *ngIf="authService.btnSair()" class="ml-auto text-light"> Bem-vindo(a), visitante! {{authService.nomeUser()}}</h5>
+  <!-- /Saudação Usuario -->
+  </div>
+</nav>
